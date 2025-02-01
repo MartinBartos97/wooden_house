@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wooden Home Paradise</title>
+    <style>
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(-100%); }
+            to { transform: translateX(0); }
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4ede4;
+        }
+        
+        header {
+            background-color: #8b4513;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            animation: slideIn 1s ease-out;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .feature-card {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            animation: fadeIn 0.8s ease-out;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: scale(1.05);
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: #8b4513;
+            color: white;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 1rem;
+            transition: all 0.3s ease;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .cta-button:hover {
+            background-color: #a0522d;
+            transform: scale(1.1);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+            animation: fadeIn 1s ease-out;
+        }
+
+        img:hover {
+            transform: scale(1.05);
+        }
+
+        section {
+            opacity: 0;
+            animation: fadeIn 1s ease-out forwards;
+        }
+
+        section:nth-child(1) { animation-delay: 0.2s; }
+        section:nth-child(2) { animation-delay: 0.4s; }
+        section:nth-child(3) { animation-delay: 0.6s; }
+
+        .feature-card:nth-child(1) { animation-delay: 0.3s; }
+        .feature-card:nth-child(2) { animation-delay: 0.6s; }
+        .feature-card:nth-child(3) { animation-delay: 0.9s; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to Wooden Home Paradise</h1>
+        <p>Experience the warmth and beauty of natural living</p>
+    </header>
+
+    <div class="container">
+        <section>
+            <h2>Why Choose Our Wooden Homes?</h2>
+            <div class="features">
+                <div class="feature-card">
+                    <h3>Eco-Friendly</h3>
+                    <p>Built with sustainable materials and energy-efficient design</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Natural Beauty</h3>
+                    <p>Each home showcases the unique character of natural wood</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Durability</h3>
+                    <p>Built to last generations with proper care and maintenance</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Our Latest Projects</h2>
+            <div class="features">
+                <img src="https://example.com/wooden-home1.jpg" alt="Modern wooden home">
+                <img src="https://example.com/wooden-home2.jpg" alt="Traditional wooden cabin">
+                <img src="https://example.com/wooden-home3.jpg" alt="Luxury wooden villa">
+            </div>
+        </section>
+
+        <section>
+            <h2>Contact Us</h2>
+            <p>Ready to start your wooden home journey?</p>
+            <a href="#contact" class="cta-button">Get in Touch</a>
+        </section>
+    </div>
+
+    <footer style="background-color: #8b4513; color: white; text-align: center; padding: 1rem;">
+        <p>&copy; 2023 Wooden Home Paradise. All rights reserved.</p>
+    </footer>
+</body>
+</html>
+
