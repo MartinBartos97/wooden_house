@@ -1,68 +1,159 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="cs">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wooden Home Paradise</title>
+    <title>MÍSTO</title>
     <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            line-height: 1.6;
+        }
+
+        .header {
+            background-color: #8b4513;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            margin: 0;
+            letter-spacing: 2px;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            margin-top: 1rem;
+            font-weight: 300;
+            opacity: 0.9;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+        }
+
+        .content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            gap: 2rem;
+            align-items: flex-start;
+        }
+
+        .text-section {
+            flex: 1;
+            padding: 2.5rem;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        .text-section h2 {
+            color: #8b4513;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            font-weight: normal;
+            border-bottom: 1px solid #deb887;
+            padding-bottom: 0.5rem;
+            letter-spacing: 0.5px;
+        }
+
+        .text-section p {
+            color: #333;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+            font-weight: normal;
+            letter-spacing: 0.2px;
+            opacity: 0.9;
+        }
+
+        .text-section:hover {
+            transform: scale(1.02);
+        }
+
+        .image-section {
+            flex: 1;
+        }
+
+        .image-section img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(139, 69, 19, 0.2);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .image-section img:hover {
+            transform: scale(1.02);
+            box-shadow: 0 6px 16px rgba(139, 69, 19, 0.3);
+        }
+
+        .countdown {
+            background-color: #fff5eb;
+            padding: 5px 0;
+            text-align: center;
+            border-top: 1px solid #deb887;
+            border-bottom: 1px solid #deb887;
+            margin: 0;
+            color: #6b3410;
+            font-family: 'Georgia', serif;
+            font-style: italic;
+        }
+
+        .countdown span {
+            font-weight: bold;
+            color: #8b4513;
+            margin: 0 5px;
+            display: inline-block;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes warmGlow {
+            0% { text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); }
+            50% { text-shadow: 2px 2px 8px rgba(222, 184, 135, 0.4); }
+            100% { text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
-        }
-
-        @keyframes slideIn {
-            from { transform: translateX(-100%); }
-            to { transform: translateX(0); }
-        }
-
-        body {
-            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
-            margin: 0;
-            padding: 0;
+        .content-section {
             background-color: #f4ede4;
+            padding: 3rem 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
         }
-        
-        header {
-            background-color: #8b4513;
-            color: white;
+
+        .blurred {
+            filter: blur(10px);
+            user-select: none;
+            pointer-events: none;
+        }
+
+        .contact-section {
             text-align: center;
-            padding: 2rem;
-            animation: slideIn 1s ease-out;
+            padding: 2rem 0;
+            background-color: #fff5eb;
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .feature-card {
-            background-color: white;
-            padding: 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            animation: fadeIn 0.8s ease-out;
-            transition: transform 0.3s ease;
-        }
-
-        .feature-card:hover {
-            transform: scale(1.05);
-        }
-
-        .cta-button {
+        .contact-button {
             display: inline-block;
             background-color: #8b4513;
             color: white;
@@ -71,81 +162,131 @@
             border-radius: 5px;
             margin-top: 1rem;
             transition: all 0.3s ease;
-            animation: float 3s ease-in-out infinite;
+            cursor: pointer;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            border: none;
         }
 
-        .cta-button:hover {
+        .contact-button:hover {
             background-color: #a0522d;
-            transform: scale(1.1);
-        }
-
-        img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 8px;
-            transition: transform 0.3s ease;
-            animation: fadeIn 1s ease-out;
-        }
-
-        img:hover {
             transform: scale(1.05);
         }
 
-        section {
-            opacity: 0;
-            animation: fadeIn 1s ease-out forwards;
+        .contact-info {
+            display: none;
+            margin-top: 1rem;
+            color: #6b3410;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            animation: fadeIn 0.5s ease-out;
         }
 
-        section:nth-child(1) { animation-delay: 0.2s; }
-        section:nth-child(2) { animation-delay: 0.4s; }
-        section:nth-child(3) { animation-delay: 0.6s; }
-
-        .feature-card:nth-child(1) { animation-delay: 0.3s; }
-        .feature-card:nth-child(2) { animation-delay: 0.6s; }
-        .feature-card:nth-child(3) { animation-delay: 0.9s; }
+        .contact-info.visible {
+            display: block;
+        }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Welcome to Wooden Home Paradise</h1>
-        <p>Experience the warmth and beauty of natural living</p>
-    </header>
-
-    <div class="container">
-        <section>
-            <h2>Why Choose Our Wooden Homes?</h2>
-            <div class="features">
-                <div class="feature-card">
-                    <h3>Eco-Friendly</h3>
-                    <p>Built with sustainable materials and energy-efficient design</p>
-                </div>
-                <div class="feature-card">
-                    <h3>Natural Beauty</h3>
-                    <p>Each home showcases the unique character of natural wood</p>
-                </div>
-                <div class="feature-card">
-                    <h3>Durability</h3>
-                    <p>Built to last generations with proper care and maintenance</p>
-                </div>
-            </div>
-        </section>
-
-        <section>
-            <h2>Our Latest Projects</h2>
-            <div class="features">
-                <img src="20240903_135923-1536x918.jpg" alt="Modern wooden home">
-            </div>
-        </section>
-
-        <section>
-            <h2>Contact Us</h2>
-            <p>Ready to start your wooden home journey?</p>
-            <a href="#contact" class="cta-button">Get in Touch</a>
-        </section>
+    <div class="header">
+        <h1>MÍSTO</h1>
+        <p>Odpocinek, Ticho, Les, Priroda, Samota, Hvezdy</p>
     </div>
 
-    <footer style="background-color: #cd783c; color: white; text-align: center; padding: 1rem;">
-        <p>&copy; 2023 Wooden Home Paradise. All rights reserved.</p>
-    </footer>
+    <div class="content-section">
+        <div class="content">
+            <div class="text-section">
+                <h2 id="main-heading">Loading...</h2>
+                <p id="main-paragraph">Loading...</p>
+            </div>
+            <div class="image-section">
+                <img src="your-image.jpg" alt="Přírodní prostředí">
+            </div>
+        </div>
+    </div>
+
+    <div class="countdown">
+        Do další fáze zbývá <span id="days">0</span> dní <span id="hours">0</span> hodin
+    </div>
+
+    <div class="content-section">
+        <div class="content">
+            <div class="image-section">
+                <img src="20240903_135923-1536x918.jpg" alt="Druhý obrázek" class="blurred">
+            </div>
+            <div class="text-section blurred">
+                <h2>Další sekce</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="contact-section">
+        <button class="contact-button" onclick="toggleContact()">Kontakt</button>
+        <div id="contact-info" class="contact-info">
+            <p>Tel: 724 751 763</p>
+            <p>Email: fake.email@gmail.com</p>
+        </div>
+    </div>
+
+    <script>
+        // Load content from files
+        async function loadContent() {
+            try {
+                // Load heading
+                const headingResponse = await fetch('content/faze1/heading.txt');
+                const headingText = await headingResponse.text();
+                document.getElementById('main-heading').textContent = headingText;
+
+                // Load paragraph
+                const paragraphResponse = await fetch('content/faze1/paragraph.txt');
+                const paragraphText = await paragraphResponse.text();
+                document.getElementById('main-paragraph').textContent = paragraphText;
+            } catch (error) {
+                console.error('Error loading content:', error);
+            }
+        }
+
+        // Call the function when the page loads
+        loadContent();
+
+        // Set the date we're counting down to (30 days from now)
+        const countDownDate = new Date();
+        countDownDate.setDate(countDownDate.getDate() + 30);
+
+        // Update the countdown every 1 second
+        const x = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = countDownDate.getTime() - now;
+
+            // Calculate days and hours
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+
+            // Display the result
+            document.getElementById("days").innerHTML = days;
+            document.getElementById("hours").innerHTML = hours;
+
+            // If the countdown is finished, display zeros
+            if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("days").innerHTML = "0";
+                document.getElementById("hours").innerHTML = "0";
+            }
+        }, 1000);
+
+        function toggleContact() {
+            const contactInfo = document.getElementById('contact-info');
+            contactInfo.classList.toggle('visible');
+            
+            if (contactInfo.classList.contains('visible')) {
+                // Wait a tiny bit for the content to become visible before scrolling
+                setTimeout(() => {
+                    contactInfo.scrollIntoView({ 
+                        behavior: 'smooth',
+                        block: 'center'
+                    });
+                }, 100);
+            }
+        }
+    </script>
 </body>
 </html>
